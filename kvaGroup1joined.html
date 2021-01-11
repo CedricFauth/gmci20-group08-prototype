@@ -15,12 +15,12 @@
   </head>
   <body>
     <div class="flex-container-horiz-startseite" style="justify-content: left; padding-left: 120px">
-      <div class="desktop-1-cols phone-12-cols">
+      <div class="desktop-1-cols phone-4-cols">
         <a href="./empty.html">
           <img class="icon" alt="Einstellungen" src="./util/einstellungen.png" />
         </a>
       </div>
-      <div  class="desktop-1-cols phone-12-cols">
+      <div  class="desktop-1-cols phone-4-cols">
         <a onclick="redirectToStartPage();" >
           <img class="icon" alt="inbox" src="./util/profile.png" />
         </a>
@@ -31,15 +31,17 @@
         <div id="groupname"></div>
         <div id="subject"></div>
     </div>
-    <div class="flex-container-vert">
-        <table style="width: 70%">
-            <tr>
-                <th> <a  style="color: red" onclick="showInfo();"> Informations </a> </th>
-                <th> <a onclick="showPosts();">Posts </a></th>
-                <th> <a onclick="showFiles();">Files </a></th>
-                <th> <a onclick="showTasks();">Tasks </a></th>
-            </tr>
-        </table>
+    <div class="flex-container-horiz">
+                 <a  style="color: red" onclick="showInfo();"> <button id ="request"> Information </button> </a> 
+                 <a onclick="showPosts();"> <button id ="request">Posts </button></a>
+                 <a onclick="showFiles();"><button id ="request">Files</button> </a>
+                 <a onclick="showTasks();"><button id ="request">Tasks </button></a>
+                 <a onclick="showPopUp();"> <button id="request"> leave group</button></a>
+    </div>
+    <div id="popup" class="popup-content desktop-5-cols phone-12-cols">
+      <p id="requestResponse"></p>
+      <button id="closeButton" onclick="redirectToStartPage();">yes!</button>
+      <button id="closeButton1"> no</button>
     </div>
     <div id="infoPanel" class="flex-container-horiz-startseite" style="display: none;">
         <table>
@@ -122,6 +124,23 @@
     </div>
   </body>
   <script>
+
+    function showPopUp(){
+      document.getElementById("popup").style.display = "flex";
+      document.getElementById("requestResponse").innerHTML =
+          "Are you sure you want to leave this group?";
+
+    }
+    
+    var button = document.getElementById("closeButton1");
+    button.onclick = function removePopUp(){
+      document.getElementById("popup").style.display = "none";
+    };
+
+    function redirectToStartPage(){
+      window.localStorage.setItem("leave","leave requested");
+      window.location.replace("./startseite.html");
+    }
       
       window.onload = function(){
          var groupname = window.localStorage.getItem("name");

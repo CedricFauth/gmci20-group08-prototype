@@ -63,7 +63,7 @@
         <tr>
           <td>
           <ul>
-            <a href="kvaGroup1joined.html" > <li id="group"></li> </a>
+            <a href="kvaGroup1joined.html" id ="grouplink"> <li id="group"></li> </a>
           </ul>
           </td>
         </tr>
@@ -89,6 +89,11 @@
           "Your request to join " + groupname + " has been accepted";
       }
       function checkRequests() {
+        var leave = window.localStorage.getItem("leave");
+        if (leave === "leave requested"){
+          console.log(leave);
+          document.getElementById("grouplink").innerHTML = "";
+        }
         var name = window.localStorage.getItem("groupname");
         groupname = name;
         if (window.localStorage.getItem("request") === "request sent") {
