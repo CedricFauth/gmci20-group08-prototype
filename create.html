@@ -19,7 +19,11 @@
             <input type="text" id="namediv" placeholder="last name" required>    
         </div>
 		<div class="flex-container-vert">
-            <div><input type="text" id="namediv" placeholder="email" required></div>
+            <div><input type="text" id="emaildiv" placeholder="email" required></div>
+            <div id="popup" class="popup-content desktop-5-cols phone-12-cols">
+                <p id="requestResponse"> The email you entered is not valid. Please try again</p>
+                <button id="closeButton">ok</button>
+              </div>
             <div> <input type="text" id="namediv" placeholder="subject" required></div>
 		</div>
 	<div class="flex-container-horiz"> 
@@ -42,6 +46,10 @@
        console.log(image.src);
    };
    function saveData() {
+    var email = document.getElementById("emaildiv").value;
+    if (!email.includes("@",0)){
+        document.getElementById("popup").style.display = "flex";
+    }
     localStorage.setItem("description",document.getElementById("description").value);
     var elms = document.querySelectorAll("[id='namediv']");
     for(var i = 0; i < elms.length; i++) {
@@ -49,5 +57,9 @@
     }
     localStorage.setItem("profilepicture",document.getElementById("outptut").src);
    }
+   var button = document.getElementById("closeButton");
+     button.onclick = function close(){
+        document.getElementById("popup").style.display = "none";
+      };
 </script>
 </html>

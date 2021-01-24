@@ -34,7 +34,10 @@
         <input type="text" id="namediv" placeholder="search" />
       </div>
     </div>
-
+    <div id="popupGroup" class="popup-content desktop-5-cols phone-12-cols">
+      <p id="requestResponse"> No group with the given subject has been found </p>
+      <button id="closeButton">ok</button>
+    </div>
     <div id="popup" class="popup-content desktop-5-cols phone-12-cols">
       <p id="requestResponse"></p>
       <button id="closeButton">ok</button>
@@ -111,6 +114,10 @@
         if (String(search).localeCompare("Komplexität von Algorithmen") == 0) {
           window.location.replace("./wish1.html");
         }
+        else {
+          document.getElementById("popupGroup").style.display = "flex";
+
+        }
         // else {} TODO
       }
       window.onload = function () {
@@ -130,7 +137,9 @@
      var button = document.getElementById("closeButton");
      button.onclick = function close(){
         document.getElementById("popup").style.display = "none";
+        document.getElementById("popupGroup").style.display = "none";
       };
+    
       window.localStorage.setItem("name",groupname);
     </script>
   </body>
