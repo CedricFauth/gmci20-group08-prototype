@@ -36,10 +36,10 @@
     </div>
     <div id="popupGroup" class="popup-content desktop-5-cols phone-12-cols">
       <p id="requestResponse"> No group with the given subject has been found </p>
-      <button id="closeButton">ok</button>
+      <button id="closeButton1">ok</button>
     </div>
     <div id="popup" class="popup-content desktop-5-cols phone-12-cols">
-      <p id="requestResponse"></p>
+      <p id="requestResponse1"></p>
       <button id="closeButton">ok</button>
     </div>
 
@@ -88,7 +88,7 @@
           document.getElementById("popup").style.display = "flex";
           window.localStorage.clear();
           document.getElementById("inbox").src = "./util/inbox.png";
-        document.getElementById("requestResponse").innerHTML =
+        document.getElementById("requestResponse1").innerHTML =
           "Your request to join " + groupname + " has been accepted";
       }
       function checkRequests() {
@@ -124,19 +124,23 @@
         var description = localStorage.getItem("description");
         var profilepicture = localStorage.getItem("profilepicture");
         var name = localStorage.getItem("item 0");
-        var subject = localStorage.getItem("item 3");
+        var subject = localStorage.getItem("item 2");
         /*console.log(elm);
        console.log(description);
        console.log(profilepicture.src);*/
         document.getElementById("name").innerHTML = "My Name: " + name;
         document.getElementById("subject").innerHTML = "My Subject: " + subject;
         document.getElementById("myDescription").innerHTML = description;
-        document.getElementById("profilePic").src = profilepicture;
+        //document.getElementById("profilePic").src = profilepicture;
+        //document.getElementById("profilePic").src = "blob:null/6a2f3865-be22-4f09-850d-40a6e710c1c5";
       };
 
      var button = document.getElementById("closeButton");
      button.onclick = function close(){
         document.getElementById("popup").style.display = "none";
+      };
+      var button1 = document.getElementById("closeButton1");
+     button1.onclick = function close(){
         document.getElementById("popupGroup").style.display = "none";
       };
     

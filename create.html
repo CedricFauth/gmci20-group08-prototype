@@ -49,6 +49,7 @@
     var email = document.getElementById("emaildiv").value;
     if (!email.includes("@",0)){
         document.getElementById("popup").style.display = "flex";
+        return;
     }
     localStorage.setItem("description",document.getElementById("description").value);
     var elms = document.querySelectorAll("[id='namediv']");
@@ -56,6 +57,7 @@
         localStorage.setItem("item " + i,elms[i].value);
     }
     localStorage.setItem("profilepicture",document.getElementById("outptut").src);
+    //console.log(document.getElementById("outptut").src);
    }
    var button = document.getElementById("closeButton");
      button.onclick = function close(){
